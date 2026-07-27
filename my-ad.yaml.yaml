@@ -1,0 +1,2 @@
+# 你的自定义规则也可以通过镜像加速
+my_custom_ad: { <<: *ad_yaml, url: "https://hub.mirrors.2020818.xyz/https://raw.githubusercontent.com/yudong820/Flclash-rule/main/my-ad.yaml" }
