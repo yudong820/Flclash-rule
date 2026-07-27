@@ -10,8 +10,8 @@
 - **🧹 广告拦截**：集成 [anti-AD](https://github.com/privacy-protection-tools/anti-AD) 规则集，过滤大量广告、跟踪器，提升浏览体验。
 - **🌐 多订阅聚合**：支持同时添加多个机场订阅，节点自动合并到统一池中。
 - **🗂️ 节点分类**：按地区（🇭🇰香港、🇯🇵日本、🇸🇬狮城、🇺🇸美国）自动提取节点，并提供故障转移（Fallback）与自动测速（URL‑Test）策略组。
-- **🎯 服务分流**：为 YouTube、Google、ChatGPT、GitHub、Netflix、Telegram 等常用服务设置独立策略组，候选节点丰富灵活。
-- **📱 Android 优化**：开启 TUN 模式（mixed 栈），支持所有应用流量接管；针对国内应用（如米家、Apple Push）优化嗅探跳过。
+- **🎯 服务分流**：为 常用服务设置独立策略组，候选节点丰富灵活。
+- **📱 Android 优化**：开启 TUN 模式（mixed 栈），支持所有应用流量接管；针对部分应用优化嗅探跳过。
 
 ---
 
@@ -56,13 +56,13 @@
 ## ⚙️ 自定义指南
 
 ### 🧩 调整策略组
-所有服务专属策略组（如 ChatGPT、Netflix）目前使用与 YouTube 相同的候选列表，您可以根据需要修改每个 `proxy-groups` 下的 `proxies` 项。
+所有服务专属策略组目前 ***** 使用与 ****** 相同的候选列表，您可以根据需要修改每个 `proxy-groups` 下的 `proxies` 项。
 
 ### 📌 添加国内应用直连
 若某些国内应用异常，可在 `rules` 段内添加 `PROCESS-NAME` 规则：
 ```yaml
-- PROCESS-NAME,com.tencent.mm,直连   # 微信
-- PROCESS-NAME,com.alibaba.android.rimet,直连  # 钉钉
+- PROCESS-NAME,com.tencent.mm,直连   # **
+- PROCESS-NAME,com.alibaba.android.rimet,直连  # **
 ```
 
 ### 🕵️ 调整广告拦截强度
