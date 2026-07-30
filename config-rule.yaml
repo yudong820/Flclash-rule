@@ -1,7 +1,7 @@
 # ================================================================
-# FlClash 分流配置 - 防泄露 + 广告拦截（参考社区最佳实践）
-# 支持 Android arm64-v8a / Clash Meta 内核
-# 广告规则：OISD Small + AdGuard DNS Filter，直接 REJECT
+# FlClash 分流配置 - 防泄露 + 广告拦截（整合 AWAvenue）
+# OISD Small + AdGuard DNS Filter + AWAvenue-Ads-Rule
+# 广告规则全部 REJECT，效率最高
 # ================================================================
 
 # -------- 机场订阅 --------
@@ -135,6 +135,7 @@ rules:
   # 广告拦截 – 直接 REJECT，无需经过策略组
   - RULE-SET,adblock,REJECT
   - RULE-SET,AdGuard,REJECT
+  - RULE-SET,AWAvenue,REJECT
 
   # 局域网与私有地址
   - RULE-SET,private_ip,直连,no-resolve
@@ -170,7 +171,7 @@ rules:
   # 兜底
   - MATCH,🐟 漏网之鱼
 
-# -------- 规则集（参考社区推荐，广告规则直接 REJECT）--------
+# -------- 规则集（包含 AWAvenue 广告规则）--------
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
@@ -178,11 +179,13 @@ rule-anchor:
   # 广告规则专用锚点
   text_domain: &text_domain {type: http, interval: 86400, behavior: domain, format: text}
   class_yaml: &class_yaml {type: http, interval: 86400, behavior: classical, format: yaml}
+  classic_yaml: &classic_yaml {type: http, interval: 86400, behavior: classical, format: yaml}
 
 rule-providers:
-  # 广告拦截
+  # 广告拦截（OISD Small + AdGuard DNS Filter + AWAvenue）
   adblock: { <<: *text_domain, url: "https://raw.githubusercontent.com/zzzt27/clash-AdsBlock/main/oisd_small.txt" }
   AdGuard: { <<: *class_yaml, url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml" }
+  AWAvenue: { <<: *classic_yaml, url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.yaml" }
 
   # 其他规则集
   fakeipfilter_domain: { <<: *domain, url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs" }
