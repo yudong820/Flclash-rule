@@ -185,7 +185,7 @@ rule-providers:
   # 广告拦截（OISD Small + AdGuard DNS Filter + AWAvenue）
   adblock: { <<: *text_domain, url: "https://raw.githubusercontent.com/zzzt27/clash-AdsBlock/main/oisd_small.txt" }
   AdGuard: { <<: *class_yaml, url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml" }
-  AWAvenue: { <<: *classic_yaml, url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.yaml" }
+  AWAvenue: { <<: *classic_yaml, url: "https://github.boki.moe/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml" }
 
   # 其他规则集
   fakeipfilter_domain: { <<: *domain, url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs" }
